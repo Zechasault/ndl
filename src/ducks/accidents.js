@@ -1,29 +1,18 @@
-
+import accidents from '../data/db.json'
 // Actions
-const FETCH_REQUEST = 'activities/FETCH_REQUEST'
+const SET_FILTER = 'accidents/SET_FILTER'
 
 // State
 const initialState = {
-  accidents: [],
-  filters: [],
-  loading: true
+  items: accidents,
+  loading: false
 }
 
 // Reducer
 export const reducer = (state = initialState, action) => {
   // FETCH
   switch (action.type) {
-    case FETCH_REQUEST:
-      return {...state,
-        items: [],
-        isFetching: true,
-        error: null
-      }
-
     default:
       return state
   }
 }
-
-// Action creators
-
