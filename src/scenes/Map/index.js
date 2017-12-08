@@ -22,13 +22,13 @@ class Map extends Component {
   render() {
     const { luminosity, collision, intersection, agglomeration, meteo } = this.state
 
-    console.log(this.props.accidents.filter((accident) => {
-      return (luminosity === '' || accident.luminosity == luminosity) &&
-      (collision === '' || accident.collision == collision) &&
-      (intersection === '' || accident.intersection == intersection) &&
-      (agglomeration === '' || accident.agglomeration == agglomeration) &&
-      (meteo === '' || accident.meteo == meteo)
-    }))
+    // console.log(this.props.accidents.filter((accident) => {
+    //   return (luminosity === '' || accident.luminosity == luminosity) &&
+    //   (collision === '' || accident.collision == collision) &&
+    //   (intersection === '' || accident.intersection == intersection) &&
+    //   (agglomeration === '' || accident.agglomeration == agglomeration) &&
+    //   (meteo === '' || accident.meteo == meteo)
+    // }))
 
     return (
       <div>
@@ -37,9 +37,17 @@ class Map extends Component {
         <Intersection onChange={this.handleChange('intersection')} value={intersection}/>
         <Luminosity onChange={this.handleChange('luminosity')} value={luminosity}/>
         <Meteo onChange={this.handleChange('meteo')} value={meteo}/>
+          <MapSvg data={this.props.accidents.filter((accident) => {
+              return (luminosity === '' || accident.luminosity == luminosity) &&
+                  (collision === '' || accident.collision == collision) &&
+                  (intersection === '' || accident.intersection == intersection) &&
+                  (agglomeration === '' || accident.agglomeration == agglomeration) &&
+                  (meteo === '' || accident.meteo == meteo)
+          })}/>
       </div>
     )
   }
+
 }
 
 export default container(Map)
